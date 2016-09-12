@@ -1,0 +1,25 @@
+﻿{
+  "version": "1.0.0-prerelease-20160912",
+
+  "packOptions": {
+    "authors": [ "Amamiya Yuuko", "Caleb Lloyd" ],
+    "tags": [ "JSON", "Entity Framework Core", "entity-framework-core", "MySQL", "EF", "ORM" ],
+    "description": "JSON Object optomized for MySql 5.7+ and Entity Framework Core",
+    "projectUrl": "https://github.com/PomeloFoundation/Pomelo.JsonObject",
+    "iconUrl": "http://www.1234.sh/assets/Shared/pomelofoundation.png",
+    "licenseUrl": "https://github.com/PomeloFoundation/Pomelo.JsonObject/blob/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/pomelofoundation/pomelofoundation/pomelo.jsonobject"
+    }
+  },
+
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "net451": {},
+    "netstandard1.3": {}
+  }
+}
