@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Pomelo.JsonObject.Tests.System
 {
 
-    [TestClass]
     public class JsonObjectTest
     {
 
@@ -18,14 +17,14 @@ namespace Pomelo.JsonObject.Tests.System
             return (T) run.DynamicInvoke(serialized);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestJsonObject()
         {
             const string jsonStr = @"{""a"":""b""}";
             var jsonObj = Cast<JsonObject<Dictionary<string, string>>>(jsonStr);
-            Assert.IsTrue(jsonObj.Object.ContainsKey("a"));
-            Assert.AreEqual("b", jsonObj.Object["a"]);
-            Assert.AreEqual(jsonStr, jsonObj.Json);
+            Assert.True(jsonObj.Object.ContainsKey("a"));
+            Assert.Equal("b", jsonObj.Object["a"]);
+            Assert.Equal(jsonStr, jsonObj.Json);
         }
     }
 

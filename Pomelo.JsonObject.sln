@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{50448786-2FF2-4A25-9588-57AA850B94C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6498FDF6-DAD2-4582-8BC2-F7F0477ED814}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pomelo.JsonObject", "src\Pomelo.JsonObject\Pomelo.JsonObject.xproj", "{F342437A-7A76-488E-97AF-E9B5373F37D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pomelo.JsonObject", "src\Pomelo.JsonObject\Pomelo.JsonObject.csproj", "{F342437A-7A76-488E-97AF-E9B5373F37D5}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pomelo.JsonObject.Tests", "test\Pomelo.JsonObject.Tests\Pomelo.JsonObject.Tests.xproj", "{CF627312-0732-405B-B3EE-55A662A4D8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pomelo.JsonObject.Tests", "test\Pomelo.JsonObject.Tests\Pomelo.JsonObject.Tests.csproj", "{CF627312-0732-405B-B3EE-55A662A4D8C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
