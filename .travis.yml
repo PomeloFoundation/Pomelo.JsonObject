@@ -1,11 +1,8 @@
 sudo: required
 
-# env:
-#   global:
-#     secure: "C5Zn1W5g8ktkMpiLeENrmN0hy0Wma+lX2LJdqrQPT3xC8Dscrb/Cu7/wZ1/5b74F25OPsSt3oD4e61NfVOQOoiCphc9cKkZDIKma1EoCunl3595lYZ+xPO+Ttc9zDTrTxF3A7JXX0MN6J3bNGa5E9elhqoiQIy5eps5RVJ32ZDdwtmdeV1rVRk28XFdWKYXeVRGy+x5UwYl+5rI3uww0rJH+7w0664ufMEa87+i3q5hXUL7WjvY3knufhDJTB2ohnYPRBux5nFMESr/vCBhOZ9B0gq7Rmtw2lMFrLQNV1LrJashLL/K0J7dHCTd/bqa/I/zeJvZOvsPqHM6STDL67dgSPD+vi0o9rAyd3ZNOHoApAuljhWXThciVyqfklthJ7dqyxmh5Vh47T7Ss2ZaMY8t1GtbHjg7I1UvxDWYiK785qBYWuE+nA9lmE0Da/85lVMIfCN/fKGSDN13vc3hwXXMJHP3AqTNtO2K8+3VTPu+vCa/kGw4SCCljN4yWMuN1hQxMGYtmBfoaFY9fUKj0mWY2bHnFLl1gKlBXKfiYzxDxFqusWaVutOkqWtA9CbbNyWO1hztxjimJRNCSaegzkATMIj2SpSdOGTSUH14eD5PrH19jRScI6hrAFQLZX1SXD8ahvPgddFrRVJMXgR6ttLZukJ0XsXowEXWFtKADIsU="
-
-services:
-  - docker
+env:
+  global:
+    jwBvg4wyA78ZWMN70LmHbXDwbH7VnctodvZGwlIvCDqQ+LwXIwutEITHUhA54+nnaJ8Oj5T/qKtUmnVx+Uq/yU54NQwaBfmHozoyZFJB6jTKjI2uLbQjDl9FIv/vH5PUTnEOG6n9aqcW63yQnt2k2ikEhUQGXSeom5sfGaDJnywhIk8Rdbhaq4mdSEHi4xo61ZZoNCK7Sjms5vh4BowZDR/AH3kNXyZ35DaQK1YOthIhWq9LqlbHfhHyYZ0E2ZuJll68zcYqcRgAyGS04IhKuWb0Bs4qXZxQ4sk90DOJ8zdY2meA7FUAdeD4cLrsUfJUn6/+oKB8RCYI1BDAgobH5K8cHTVeelCcymaUcuSU1vhN9MiumYyyRwrNa3l4PUknoyLCq2o3biMBRUqOz9v6JfQd6SOyif9+CExPZXi6CZt5/bp9sy+RyU65StR1s1TulufZ9dU6WybDiXpQtbTyRHQfVdnr2duPReTk2fsn0zFdxSbqgyIeg/oJBvoYSFnJD/SFO9UTfuyXtOYBRKH4k0f81IrRa0/RQAGtAAXi1W+npw4m3I0CjSjB32RNM2Z/HTwTJZyRen2hfrG3TVzk/qCDyCvOqKoR7YG74jxtBa8hAD82RE468SjjOtgS9GW4YT0RnY438IeCUKcn98Iqdo1AQpA+zI+S0o6FyAZpX0I=
 
 branches:
   only:
@@ -24,17 +21,17 @@ script:
     fi
     ./build.sh "/p:BuildNumber=${BUILD_NUMBER}" "/p:IsFinalBuild=${IS_FINAL_BUILD}"
 
-# deploy:
-#   - provider: script
-#     skip_cleanup: true
-#     script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
-#     on:
-#       branch: master
-#   - provider: script
-#     skip_cleanup: true
-#     script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
-#     on:
-#       tags: true
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
+    on:
+      tags: true
 
 notifications:
   email: false
