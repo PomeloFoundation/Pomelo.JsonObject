@@ -1,27 +1,40 @@
-language: csharp
 sudo: required
-dist: trusty
-addons:
-  apt:
-    packages:
-    - gettext
-    - libcurl4-openssl-dev
-    - libicu-dev
-    - libssl-dev
-    - libunwind8
-    - zlib1g
-mono:
-  - 4.0.5
-os:
-  - linux
-osx_image: xcode7.1
+
+# env:
+#   global:
+#     secure: "C5Zn1W5g8ktkMpiLeENrmN0hy0Wma+lX2LJdqrQPT3xC8Dscrb/Cu7/wZ1/5b74F25OPsSt3oD4e61NfVOQOoiCphc9cKkZDIKma1EoCunl3595lYZ+xPO+Ttc9zDTrTxF3A7JXX0MN6J3bNGa5E9elhqoiQIy5eps5RVJ32ZDdwtmdeV1rVRk28XFdWKYXeVRGy+x5UwYl+5rI3uww0rJH+7w0664ufMEa87+i3q5hXUL7WjvY3knufhDJTB2ohnYPRBux5nFMESr/vCBhOZ9B0gq7Rmtw2lMFrLQNV1LrJashLL/K0J7dHCTd/bqa/I/zeJvZOvsPqHM6STDL67dgSPD+vi0o9rAyd3ZNOHoApAuljhWXThciVyqfklthJ7dqyxmh5Vh47T7Ss2ZaMY8t1GtbHjg7I1UvxDWYiK785qBYWuE+nA9lmE0Da/85lVMIfCN/fKGSDN13vc3hwXXMJHP3AqTNtO2K8+3VTPu+vCa/kGw4SCCljN4yWMuN1hQxMGYtmBfoaFY9fUKj0mWY2bHnFLl1gKlBXKfiYzxDxFqusWaVutOkqWtA9CbbNyWO1hztxjimJRNCSaegzkATMIj2SpSdOGTSUH14eD5PrH19jRScI6hrAFQLZX1SXD8ahvPgddFrRVJMXgR6ttLZukJ0XsXowEXWFtKADIsU="
+
+services:
+  - docker
+
 branches:
   only:
     - master
-    - release
-    - dev
-    - /^(.*\/)?ci-.*$/
-before_script:
-  - chmod ugo+x build.sh
+    - /^\d+\.\d+\.\d+(-.+)?$/
+
+before_install:
+  - ./run.sh install-tools
+
 script:
-  - ./build.sh --quiet verify
+  - |
+    export BUILD_NUMBER=$(TZ=":US/Eastern" date '+%Y%m%d%H%M%S')
+    export IS_FINAL_BUILD=false
+    if [ ! -z "$TRAVIS_TAG" ]; then
+      export IS_FINAL_BUILD=true
+    fi
+    ./build.sh "/p:BuildNumber=${BUILD_NUMBER}" "/p:IsFinalBuild=${IS_FINAL_BUILD}"
+
+# deploy:
+#   - provider: script
+#     skip_cleanup: true
+#     script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
+#     on:
+#       branch: master
+#   - provider: script
+#     skip_cleanup: true
+#     script: ./dotnet-run.sh dotnet nuget push "./artifacts/build/*.nupkg" --api-key "$MYGET_KEY" --source "https://www.myget.org/F/pomelo/api/v3/index.json"
+#     on:
+#       tags: true
+
+notifications:
+  email: false

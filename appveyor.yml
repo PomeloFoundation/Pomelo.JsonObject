@@ -1,15 +1,10 @@
-init:
-  - git config --global core.autocrlf true
-branches:
-  only:
-    - master
-    - release
-    - dev
-    - /^(.*\/)?ci-.*$/
-build_script:
-  - build.cmd --quiet verify
+image: Visual Studio 2017
 clone_depth: 1
-test: off
+
+build_script:
+  - ps: .\run.ps1 install-tools
+
+test_script:
+  - .\build.cmd
+
 deploy: off
-services:
-  - mysql

@@ -2,6 +2,6 @@
 // Licensed under the MIT. See LICENSE in the project root for license information.
 
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("Pomelo.JsonObject")]
-[assembly: AssemblyDescription("JSON Object optomized for MySql 5.7+ and Entity Framework Core")]
+[assembly: InternalsVisibleTo("Pomelo.JsonObject.Tests")]
