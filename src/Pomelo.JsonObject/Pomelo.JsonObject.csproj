@@ -9,7 +9,6 @@
     <PackageTags>JSON;Entity Framework Core;entity-framework-core;MySQL;EF;ORM</PackageTags>
     <PackageIconUrl>http://www.1234.sh/assets/Shared/pomelofoundation.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/PomeloFoundation/Pomelo.JsonObject</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/PomeloFoundation/Pomelo.JsonObject/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/PomeloFoundation/Pomelo.JsonObject.git</RepositoryUrl>
   </PropertyGroup>
