@@ -11,6 +11,6 @@ JSON Object optimized for MySql 5.7+ and Entity Framework Core
 
 Supports versions of `Pomelo.EntityFrameworkCore.MySql` below `5.0.0`.
 
-For `5.0.0` and above, use the following two packages, whiche are part of the [main repository](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql):
+For `5.0.0` and above, use the following two packages, which are part of the [main repository](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql):
 * [Pomelo.EntityFrameworkCore.MySql.Json.Microsoft](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql.Json.Microsoft/)
 * [Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft/)
